@@ -1,6 +1,6 @@
 function mix(...arr) {
 
-    let result;
+    let result = 0;
     var mainObject = {};
 
     var errorsObject = {
@@ -26,7 +26,7 @@ function mix(...arr) {
 
         }
     }
-
+    errorsObject.value = result;
     return errorsObject;
 }
 

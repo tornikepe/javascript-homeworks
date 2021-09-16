@@ -34,39 +34,11 @@ function readingStatus(books) {
         }
     ];
 
-    for (let i = 0; i < 1; i++) {
-
-        // 1
-        if (Books[0].haveRead) {
-            if (!isNaN(Books[0].dateOfRead)) {
-                console.log(`${Books[0].author} have read ${Books[0].title} book ${Books[0].daysAgo} days ago`)
-            } else {
-                console.log(`${Books[0].author} haven't read ${Books[0].title} book yet`)
-            }
+    for (let items of Books) {
+        if (items.haveRead) {
+            console.log(`${items.author} have read ${items.title} book ${items.daysAgo} days ago`)
         } else {
-            console.log(`${Books[0].author} haven't read ${Books[0].title} book yet`)
-        }
-
-        // 2
-        if (Books[1].haveRead) {
-            if (!isNaN(Books[1].dateOfRead)) {
-                console.log(`${Books[1].author} have read ${Books[1].title} book ${Books[1].daysAgo} days ago`)
-            } else {
-                console.log(`${Books[1].author} haven't read ${Books[1].title} book yet`)
-            }
-        } else {
-            console.log(`${Books[1].author} haven't read ${Books[1].title} book yet`)
-        }
-
-        // 3
-        if (Books[2].haveRead) {
-            if (!isNaN(Books[2].dateOfRead)) {
-                console.log(`${Books[2].author} have read ${Books[2].title} book {x} days ago`)
-            } else {
-                console.log(`${Books[2].author} haven't read ${Books[2].title} book yet`)
-            }
-        } else {
-            console.log(`${Books[2].author} haven't read ${Books[2].title} book yet`)
+            console.log(`${items.author} haven't read ${items.title} book yet`)
         }
     }
 }

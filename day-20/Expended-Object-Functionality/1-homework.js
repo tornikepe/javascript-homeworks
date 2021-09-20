@@ -47,6 +47,4 @@ data.mergeDeepRight({
         },
     },
 });
-
-console.log(data);
-// console.log(data['contact']);
+console.log(JSON.stringify(data));

@@ -14,8 +14,7 @@ class Countries {
                     const statusCode = meta.status;
                     if (statusCode === 200) {
                         const data = JSON.parse(body)
-                        //for example
-                        resolve([data[0].address])
+                        resolve([data[number]])
                     } else {
                         reject(`We have error, status code: ${statusCode}`)
                     }

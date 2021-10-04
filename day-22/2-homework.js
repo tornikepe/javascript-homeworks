@@ -13,8 +13,14 @@ class Countries {
                 get(url, (error, meta, body) => {
                     const statusCode = meta.status;
                     if (statusCode === 200) {
+
                         const data = JSON.parse(body)
                         resolve([data[number]])
+
+                        // OR
+
+                        // resolve(`${this.api}/${number}`)
+
                     } else {
                         reject(`We have error, status code: ${statusCode}`)
                     }

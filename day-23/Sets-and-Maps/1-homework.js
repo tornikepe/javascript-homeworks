@@ -51,7 +51,7 @@ class DB {
 
     update(id, obj) {
 
-        if (!id) {
+        if (!(this.map.has(id))) {
             throw new Error('non-existing id is passed.')
         } else if (typeof id !== 'string') {
             throw new Error('There is no string parameter')
@@ -69,16 +69,16 @@ class DB {
 
     delete(id) {
 
-        if (!id) {
+        if (!(this.map.has(id))) {
             throw new Error('non-existing id is passed.')
         } else {
             this.map.delete(id)
-            console.log(true)
+            return true
         }
     }
 }
 
-//////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
 const db = new DB();
 

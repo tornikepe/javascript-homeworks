@@ -45,7 +45,7 @@ class DB {
         let arr = [];
         arr.push(...this.map.entries())
         for (const value of arr) {
-            return [value[1]]
+            console.log([value[1]])
         }
     }
 
@@ -63,7 +63,7 @@ class DB {
                 uniqeId[key] = obj[key];
             }
             this.map.set(uniqeId.id, uniqeId);
-            return uniqeId.id;
+            console.log(uniqeId.id)
         }
     }
 
@@ -73,6 +73,7 @@ class DB {
             throw new Error('non-existing id is passed.')
         } else {
             this.map.delete(id)
+            console.log(true)
         }
     }
 }

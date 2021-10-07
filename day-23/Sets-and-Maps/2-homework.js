@@ -4,6 +4,7 @@ class DB {
     }
 
     create(obj) {
+
         //validation
         if (typeof obj !== 'object') {
             throw new Error('it is not Object')
@@ -24,6 +25,7 @@ class DB {
     }
 
     read(id) {
+
         if (typeof id !== 'string') {
             throw new Error('There is no string parameter')
         } else if (arguments.length === 0) {
@@ -44,7 +46,6 @@ class DB {
     }
 
     update(id, obj) {
-
         if (!(this.map.has(id))) {
             throw new Error('non-existing id is passed.')
         } else if (typeof id !== 'string') {
@@ -62,6 +63,7 @@ class DB {
     }
 
     delete(id) {
+
         if (!(this.map.has(id))) {
             throw new Error('non-existing id is passed.')
         } else {
@@ -71,30 +73,41 @@ class DB {
     }
 
     find(query) {
-        let users = this.readAll();
+        let readAll = this.readAll();
         for (const key in query) {
+
             if (key === 'country' || key === 'name') {
-                users = users.filter(user => {
+
+                readAll = readAll.filter(user => {
                     return user[key] === query[key];
                 });
+
             } else {
-                const value = query[key];
-                let maxAndMin = user => {
-                    return user[key] > value.min;
+
+                const mm = query[key];
+                let mins = user => {
+                    if (mm.hasOwnProperty('min')) {
+                        return user[key] > mm.min;
+                    }
+                    return true;
                 };
-                if (value.hasOwnProperty('max')) {
-                    maxAndMin = user => {
-                        return user[key] > value.min && user[key] < value.max;
-                    };
-                }
-                users = users.filter(maxAndMin);
+                let maxs = user => {
+                    if (mm.hasOwnProperty('max')) {
+                        return user[key] < mm.max;
+                    }
+                    return true;
+                };
+
+                readAll = readAll.filter(user => {
+                    return mins(user) && maxs(user);
+                });
             }
         }
-        return users;
+        return readAll;
     }
 }
 
-//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const db = new DB();
 
@@ -111,20 +124,31 @@ const customers = db.readAll(); // array of users
 db.update(id, {
     age: 22
 }); // id
-db.delete(id); // true
+// db.delete(id); // true
 
-//////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const query = {
-    name: 'Tornike',
-    country: 'ua',
+    name: 'Pitter',
+    country: 'ge',
     age: {
-        min: 21
+        min: 21,
     },
     salary: {
         min: 300,
-        max: 600
-    }
+        max: 600,
+    },
 };
 const customerss = db.find(query); // array of users
 console.log(customerss);
+
+// const query = {
+//     country: 'ua',
+//     age: {
+//         min: 21
+//     },
+//     salary: {
+//         min: 300,
+//         max: 600
+//     }
+// };

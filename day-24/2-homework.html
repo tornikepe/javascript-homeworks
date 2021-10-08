@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2-homework</title>
+</head>
+
+<body>
+    <img src="" alt="" style="width: 900px; height: 600px;">
+    <button style="width: 100px; height: 50px;">Next image</button>
+    <p style="font-size: 30px;"></p>
+    <script>
+        const array = [
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png',
+            'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/1200px-Typescript_logo_2020.svg.png',
+            'https://www.oxfordwebstudio.com/user/pages/06.da-li-znate/sta-je-html/sta-je-html.jpg',
+            'https://i.ytimg.com/vi/1Rs2ND1ryYc/maxresdefault.jpg',
+            'https://www.thoughtco.com/thmb/sZXKnPFCUHcBftnvQA76rG1flHM=/3499x2334/filters:no_upscale():max_bytes(150000):strip_icc()/laptop-with-css-word-on-screen--learn-css--web-development-877009350-5b7b7c26c9e77c00507ccf75-b94287046011490c8538a8cd4cb3e1d1.jpg'
+        ];
+
+        const image = document.querySelector('img');
+        const button = document.querySelector('button');
+        const p = document.querySelector('p')
+
+        function randomImages(arr) {
+            let random = Math.floor(Math.random() * arr.length);
+            image.setAttribute('src', arr[random]);
+            p.innerHTML = random;
+        }
+
+        randomImages(array);
+
+        button.addEventListener('click', () => randomImages(array));
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-homework</title>
+</head>
+
+<body>
+    <div id="textBox">
+        <strong>Lorem ipsum</strong> dolor, sit amet consectetur adipisicing elit. Nemo sint earum ab
+        <strong>totam</strong> praesentium aperiam suscipit reiciendis doloribus, sequi incidunt atque necessitatibus
+        <strong>ipsam tempora</strong> obcaecati numquam provident modi, doloremque magni?
+    </div>
+
+    <script>
+        const textBox = document.getElementById('textBox');
+        const strong = [...document.getElementsByTagName('strong')];
+
+        textBox.addEventListener("mouseover", function (event) {
+            strong.forEach(element => {
+                element.style.color = 'green';
+                element.style.fontSize = '19px';
+            });
+        });
+
+        textBox.addEventListener("mouseout", function (event) {
+            strong.forEach(element => {
+                element.style.color = 'black';
+                element.style.fontSize = '16px';
+            });
+        });
+    </script>
+</body>
+
+</html>

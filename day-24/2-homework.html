@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <img src="" alt="" style="width: 900px; height: 600px;">
+    <img src="" alt="">
     <button style="width: 100px; height: 50px;">Next image</button>
     <p style="font-size: 30px;"></p>
     <script>
@@ -28,7 +28,7 @@
         function randomImages(arr) {
             let random = Math.floor(Math.random() * arr.length);
             image.setAttribute('src', arr[random]);
-            p.innerHTML = random;
+            p.innerHTML = `Photo width : ${image.width} - Photo height : ${image.height}`;
         }
 
         randomImages(array);
